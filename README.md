@@ -11,7 +11,7 @@
 | LangChain for LLM Application Development | 1 hr | Enrolled |   https://learn.deeplearning.ai/langchain/lesson/1/introduction | 
 | Introduction to Responsible AI            | 8 hr | TODO |  https://www.cloudskillsboost.google/course_templates/554 |
 | ChatGPT for Everyone                      | 1 hr | Enrolled  |  https://learnprompting.thinkific.com/courses/take/ChatGPT-for-Everyone/lessons/52250248-introduction
-| What is Generative AI | 42 min | TODO | https://www.linkedin.com/learning/what-is-generative-ai/the-importance-of-generative-ai?autoSkip=true&resume=false |
+| What is Generative AI | 42 min | COMPLETE | https://www.linkedin.com/learning/what-is-generative-ai/the-importance-of-generative-ai?autoSkip=true&resume=false |
 | Introduction to Generative AI | 77 min | TODO |  https://www.cloudskillsboost.google/course_templates/536 | 
 | ChatGPT Prompt Engineering for Developers | 1 hr | Enrolled | https://learn.deeplearning.ai/chatgpt-prompt-eng/lesson/1/introduction |
 | Foundations of Prompt Engineering |  4 hr | TODO |  https://explore.skillbuilder.aws/learn/course/external/view/elearning/17763/foundations-of-prompt-engineering | 
