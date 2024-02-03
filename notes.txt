@@ -262,4 +262,86 @@ https://ai.googleblog.com/2022/03/auto-generated-summaries-in-google-docs.html
 
 
 
+
+#########################################################################################################
+##
+## ChatGPT for Everyone	
+##
+#########################################################################################################
+
+ChatGPT for Everyone	
+https://learnprompting.thinkific.com/courses/take/ChatGPT-for-Everyone/lessons/52250248-introduction
+
+
+ChatGPT: Conversational Generative AI
+    - Generative Pre-Trained Transformer
+
+prompt:  question of set of instructions
+
+# Basics of Prompt Engineering
+    - Instruction: main objective or question
+    - Context: text / data provided
+    - Role: having ChatGPT assume a role to execute for the answer (act as a personal assitent, rust developer, etc.)
+    - Format Instructions: Step-by-Step DIY Guide, put summary data in a markdown table 
+    - Few-Shot Prompting: Show examples of what to do i.e. how paragraphs were summarized in the past 
+
+# Improving Prompts
+    - "Say it in the style of XYZ"
+    Prompt Engineering:  Refine prompt over time >> Conversational Prompt Engineering
+
+
+# Advanced ChatGPT Interface
+
+    - bottom left > account name
+    - click > menu: Custom Instructions 
+            - allows for additional context
+            - shape how ChatGPT responds:
+                - What would you like ChatGPT to know about you to proivde better responses (location, work, hobbies, goals, etc)
+                - How would you like ChatGPT to respond (how formal or casual, how long / short, how addressed, etc.)
+
+    - history section on left
+        - each chat saved
+        - NOTE: Chats will be used to train ChatGPT
+                - To Turn Off  Account > Settings > Data Controls > Chat History & Training [Off]
+
+    - Share Chat: Top Right > Copy Link 
+
+# ChatGPT's Advanced Features on ChatGPT Plus Accounts
+    - Using ChatGPT Vision Capabilities
+            - upload image and ask questions about it (ChatGPT 4)
+    - Access the Internet
+    - Advanced Data Analytics
+            - upload a pdf, xls and analyze 
+    - DALL-E 3
+
+# Limitations
+    - Hallucinations: Doesn't now correct answer but answers anyway
+        ex. Which country is bigger, Nigeria or Chad ? 
+
+    - Citing sources:  ChatGPT can make up sources 
+        - use proper context
+
+# Bias
+    - Training data has been trained on biased data 
+        - Prompt to "not be biased" and fine tune 
+
+# Data Privacy
+    - ChatGPT records prompts
+        - turn off as above
+    - ChatGPT does not record or improve model with data from Enterprise Plan
+
+Certificate of completion:
+https://learnprompting.thinkific.com/account/certificates
+https://learnprompting.thinkific.com/certificates/djnxpzyykn
+
+
+
+
+
+
+
+
+
+
+
 .

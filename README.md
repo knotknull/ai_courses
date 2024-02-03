@@ -10,7 +10,7 @@
 | Microsoft Azure AI Fundamentals: Generative AI | 2.5 hr | TODO |  https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/ | 
 | LangChain for LLM Application Development | 1 hr | Enrolled |   https://learn.deeplearning.ai/langchain/lesson/1/introduction | 
 | Introduction to Responsible AI            | 8 hr | TODO |  https://www.cloudskillsboost.google/course_templates/554 |
-| ChatGPT for Everyone                      | 1 hr | Enrolled  |  https://learnprompting.thinkific.com/courses/take/ChatGPT-for-Everyone/lessons/52250248-introduction
+| ChatGPT for Everyone                      | 1 hr | COMPLETED 20240202  |  https://learnprompting.thinkific.com/courses/take/ChatGPT-for-Everyone/lessons/52250248-introduction
 | What is Generative AI | 42 min | COMPLETED 20240131| https://www.linkedin.com/learning/what-is-generative-ai/the-importance-of-generative-ai?autoSkip=true&resume=false |
 | Introduction to Generative AI | 77 min | COMPLETED 20240201 |  https://www.cloudskillsboost.google/course_templates/536 | 
 | ChatGPT Prompt Engineering for Developers | 1 hr | Enrolled | https://learn.deeplearning.ai/chatgpt-prompt-eng/lesson/1/introduction |
