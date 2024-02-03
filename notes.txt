@@ -338,9 +338,132 @@ https://learnprompting.thinkific.com/certificates/djnxpzyykn
 
 
 
+#########################################################################################################
+##
+## Generative AI for Everyone	
+##
+#########################################################################################################
+
+https://www.coursera.org/learn/generative-ai-for-everyone/home/week/1
+
+[week 1]
+- AI is a set of tools 
+    - Supervised learning (labeling things)
+    - Unsupervised learning 
+    - Reinforcement learning 
+    - Generative AI
+
+Supervised learning  (labeling things)
+    Input   -> Output
 
 
+    Input (A)           Output (B)             |   Application
+    -------------------------------------------|----------------------------------
+     Email                 Spam?  (0/1)        |  Spam filtering
+     Ad, user info         Click? (0/1)        |  Online advertising
+     Image, radar info   Position other cars   |  Self-driving car
+     x-ray image           Diagnosis           |  Healthcare
+     image of phone        Defect? (0/1)       |  Visual inspection
+     audio recording       Text transcript     |  Speech recognition
+     restaurant reviews    Sentiment (neg/pos) |  Reputation monitoring
 
+2010 - 2020: Large scale supervised learning
+    Small AI models:  larger data didn't not result in better performance
+    Large AI models:  larger data DID result in better performance
+
+    i.e. Let's build large models and feed them ALOT of data
+            - pathway to Generative AI
+
+
+How LLMs work: 
+    - LLMs are built by using supervised learning (A -> B) to repeatedly predict the next word. 
+
+        ex. My favorite food is a bagel with cream cheese
+    Input (A)  [prompt]                       | Output (B)  [response]
+    ----------------------------------------- | ----------------------------
+    My favorite food is a                     |  bagel
+    My favorite food is a bagel               |  with 
+    My favorite food is a bagel with          |  cream  
+    My favorite food is a bagel with cream    |  cheese 
+
+    When train an AI system on hundreds of billions of words, get an LLM
+
+
+Uses for LLMs:
+    - writing / brainstorming
+    - reading / read and summerize text (emails, etc.)
+    - chatting / chatbots
+    web  vs.  app 
+
+Gen AI Applications:
+  Text:
+    - brainstorming
+    - writing emails / articles
+    - translations (Priate English)
+
+  Reading:
+    - proofreading
+    - summary
+    - email analysis 
+    - sentiment / reputation monitoring
+    NOTE: refine prompts with additional information
+
+  Chatting:
+    - customer service
+
+
+LLMs: Can vs. Can't Do
+Can:
+    - can a college grad execute the prompt ?  (guideline)
+            - add data to complete the task
+    - knowledge cutoffs, LLMs training stops at a certain date
+    - Hallucinations: ask about well known people and you may get dubious quotes
+    - input / output length is limited
+    - Does not work well with structured (tabular) data (used supervised data for this)
+    - Works best with unstructured data 
+    - Bias / Toxicity
+
+
+Tips for prompting:
+
+    - Be detailed and specific 
+            - Give enough context to complete the task
+            - describe taks in detail
+
+    - Guide the model to think through its answer
+            - give steps thru the answer 
+                    Brainstorm 5 names for a new baby toy.
+                    Step 1: Come up with 5 fun, joyful words that relate to human babies.
+                    Step 2: For each word, come up with a rhyming name for a toy.
+                    Step 3: Fore each toy name, add a fun relevant emoji.
+            
+    - Experiment and iterate
+            - develop a process to iterate 
+            - improve prompts
+
+            Idea -----> Prompt -----> LLM Response  ----->  Refine --+
+             ^-------------------------------------------------------+
+                        (add more detail or detailed task)
+
+Image Generation :
+
+   Image Generation (diffusion model) 
+        - learns from images on the Internet (via supervised learning)
+        - take an image and then add "noise" to the image
+            - teach model to take "noisy" image and generate less-noisy image ---+
+                ^------------------------- REPEAT -------------------------------+ 
+                NOTE: typically 100 steps for a diffusion model
+
+        - image has text caption associated with it 
+        - to generate new image 
+            - image is pure noisy 
+            - input prompt from user 
+            - diffuse to lessy noisy image (repeat per above)
+
+
+[week 2]
+MAP LAST HERE
+https://www.coursera.org/learn/generative-ai-for-everyone/lecture/LfGc4/using-generative-ai-in-software-applications
 
 
 
