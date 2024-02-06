@@ -1299,4 +1299,196 @@ NOTE: Each conversation is a stand alone interaction.  Must provide all relevant
 ## 
 
 
+#########################################################################################################
+## LangChain for LLM Application Development
+#########################################################################################################
+
+https://learn.deeplearning.ai/langchain/lesson/1/introduction
+
+
+## Introduction 
+## 
+    - Framework for LLM apps
+    - Focused on composition / modularity 
+            - Modular components
+            - Common wyas to combine components
+
+    - Models    
+            - 20+ integrations
+
+    - Prompts    
+            - Prompt Templates
+            - Output parsers
+            - Example selectors
+
+    - Indexes
+            - Document Loaders
+            - Text Splitters
+            - Vector stores
+
+    - Chains
+            - Prompt + LLM + Output parsing
+
+    - Agents
+            - Agent types
+
+
+
+## Models, Prompts and Parsers 
+## 
+
+(see LC1_Model_prompt_parser.ipynb)
+
+
+## import langchain
+from langchain.chat_models import ChatOpenAI
+
+
+# Create chat endpoing
+# To control the randomness and creativity of the generated
+# text by an LLM, use temperature = 0.0
+chat = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo")
+
+# import langchain Chat Prompt Template
+from langchain.prompts import ChatPromptTemplate
+## bring in chat prompt template
+template_string = """Translate the text \
+that is delimited by triple backticks \
+into a style that is {style}. \
+text: ```{text}```
+"""
+
+# create the template
+prompt_template = ChatPromptTemplate.from_template(template_string)
+
+# create values for place holders style and email
+customer_style = """American English \
+in a calm and respectful tone
+"""
+
+customer_email = """
+Arrr, I be fuming that me blender lid flew off and splattered me kitchen walls \
+with smoothie! And to make matters worse,  the warranty don't cover the cost of \
+cleaning up me kitchen. I need yer help right now, matey! 
+"""
+
+# format the prompt template with the values
+customer_messages = prompt_template.format_messages(
+                    style=customer_style,
+                    text=customer_email)
+
+# send formatted prompt to chat
+customer_response = chat(customer_messages)
+
+
+## import Response Schema and Structured Output Parser
+from langchain.output_parsers import ResponseSchema
+from langchain.output_parsers import StructuredOutputParser
+## set up schemas for the the parts of the response
+
+gift_schema = ResponseSchema(name="gift",
+                             description="Was the item purchased\
+                             as a gift for someone else? \
+                             Answer True if yes,\
+                             False if not or unknown.")
+delivery_days_schema = ResponseSchema(name="delivery_days",
+                                      description="How many days\
+                                      did it take for the product\
+                                      to arrive? If this \
+                                      information is not found,\
+                                      output -1.")
+price_value_schema = ResponseSchema(name="price_value",
+                                    description="Extract any\
+                                    sentences about the value or \
+                                    price, and output them as a \
+                                    comma separated Python list.")
+
+response_schemas = [gift_schema, 
+                    delivery_days_schema,
+                    price_value_schema]
+
+
+## create the structured output parser
+
+## get structured output parser
+output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
+
+## get instructions from output parser
+format_instructions = output_parser.get_format_instructions()
+
+## set review template
+review_template_2 = """\
+For the following text, extract the following information:
+
+gift: Was the item purchased as a gift for someone else? \
+Answer True if yes, False if not or unknown.
+
+delivery_days: How many days did it take for the product\
+to arrive? If this information is not found, output -1.
+
+price_value: Extract any sentences about the value or price,\
+and output them as a comma separated Python list.
+
+text: {text}
+
+{format_instructions}
+"""
+
+## set the prompt from the template
+prompt = ChatPromptTemplate.from_template(template=review_template_2)
+
+## prompt with the formatted templates
+messages = prompt.format_messages(text=customer_review, 
+                                format_instructions=format_instructions)
+
+## call chat with the formatted prompt
+response = chat(messages)
+
+## now parse the output: response.content
+output_dict = output_parser.parse(response.content)
+
+
+output_dict
+
+{'gift': False,
+ 'delivery_days': '2',
+ 'price_value': "It's slightly more expensive than the other leaf blowers out there, but I think it's worth it for the extra features."
+}
+output_dict.get('delivery_days')
+
+
+
+## Memory (17 min)
+## 
+
+
+## Chains (13 min)
+## 
+
+
+## Question and Answer (15 min)
+## 
+
+
+## Evaluation (15 min)
+## 
+
+
+## Agents (14 min)
+## 
+
+
+## Conclusion (2 min)
+## 
+
+
+
+
+
+
+
+
+
+
+
 .
