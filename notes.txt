@@ -1461,6 +1461,40 @@ output_dict.get('delivery_days')
 ## Memory (17 min)
 ## 
 
+https://learn.deeplearning.ai/langchain/lesson/3/memory
+
+##from langchain.chat_models import ChatOpenAI
+from langchain_openai import ChatOpenAI
+from langchain.chains import ConversationChain
+from langchain.memory import ConversationBufferMemory
+
+llm_model="gpt-3.5-turbo"
+llm = ChatOpenAI(temperature=0.0, model="gpt-3.5-turbo")
+memory = ConversationBufferMemory()
+conversation = ConversationChain(
+    llm=llm, 
+    memory = memory,
+    verbose=True
+)
+
+- LLMs are stateless 
+    - each transaction is independent
+    - chatbots appear to have memory by providing the full conversation as 'context'
+
+- Langcahin offers various Conversation buffers:
+    - ConversationBufferMemory:       keeps current conversation in memory
+    - ConversationBufferWindowMemory: keeps a "windows" of current conversation i.e. last 5 items, etc.
+    - ConversationTokenBufferMemory:  keeps certain number of tokens of current conversation 
+    - ConversationSummaryMemory:      keeps a running summary of current conversation 
+
+- Additional Langcahin Memory Types :
+    - Vector data memory:  Stores text to a vector db and retrieves most relevant blocks of text
+    - Entity memories :    Using an LLM, remembers details about specific entities.
+
+NOTE: can use multiple memories at same time and can store in conventional database
+
+
+MAP LAST HERE
 
 ## Chains (13 min)
 ## 
