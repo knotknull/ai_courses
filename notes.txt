@@ -1460,6 +1460,7 @@ output_dict.get('delivery_days')
 
 ## Memory (17 min)
 ## 
+(see LC2_Memory.ipynb)
 
 https://learn.deeplearning.ai/langchain/lesson/3/memory
 
@@ -1480,12 +1481,72 @@ conversation = ConversationChain(
 - LLMs are stateless 
     - each transaction is independent
     - chatbots appear to have memory by providing the full conversation as 'context'
+        - i.e. memory of current chat / interaction is kept in a buffer
 
 - Langcahin offers various Conversation buffers:
-    - ConversationBufferMemory:       keeps current conversation in memory
-    - ConversationBufferWindowMemory: keeps a "windows" of current conversation i.e. last 5 items, etc.
-    - ConversationTokenBufferMemory:  keeps certain number of tokens of current conversation 
-    - ConversationSummaryMemory:      keeps a running summary of current conversation 
+# ConversationBufferMemory:       keeps current conversation in memory
+        - can update current memory context as such:
+                memory.save_context({"input": "Not much, just hanging"}, {"output": "Cool"})
+                memory.load_memory_variables({})
+                > {'history': 'Human: Hi, my name is Doktor Z\nAI: Hello Doktor Z! How can I assist you today?\n
+                    Human: What is 1+1?\nAI: 1+1 is equal to 2.\nHuman: What is my name?\nAI: Your name is Doktor Z.\n
+                    Human: Not much, just hanging\nAI: Cool'}
+
+
+    - The bigger the memory buffer the more tokens must be processed to proces the history of the chat
+
+ # ConversationBufferWindowMemory: keeps a "windows" of current conversation i.e. last N items, etc.
+            ## This only remembers the last k=1 items in the conversation
+            ## 
+            llm = ChatOpenAI(temperature=0.0, model=llm_model)
+            memory = ConversationBufferWindowMemory(k=1)
+            conversation = ConversationChain(
+                llm=llm, 
+                memory = memory,
+                verbose=False
+            )
+
+
+# ConversationTokenBufferMemory:  keeps certain number of tokens of current conversation 
+        NOTE: install via pip install toktoken
+        - Like WindowMemory but keeps a token limit in memory (history)
+
+            ## This only remembers the 50 tokens worth of conversation
+            ## 
+            from langchain.memory import ConversationTokenBufferMemory
+            from langchain.llms import OpenAI
+            llm = ChatOpenAI(temperature=0.0, model=llm_model)
+            memory = ConversationTokenBufferMemory(llm=llm, max_token_limit=50)
+
+
+
+# ConversationSummaryMemory:      keeps a running summary of current conversation 
+        - Has the LLM to provide a summary of the conversaiont up to N tokens
+
+            # create a long string
+            schedule = "There is a meeting at 8am with your product team. \
+            You will need your powerpoint presentation prepared. \
+            9am-12pm have time to work on your LangChain \
+            project which will go quickly because Langchain is such a powerful tool. \
+            At Noon, lunch at the italian resturant with a customer who is driving \
+            from over an hour away to meet you to understand the latest in AI. \
+            Be sure to bring your laptop to show the latest LLM demo."
+
+            memory = ConversationSummaryBufferMemory(llm=llm, max_token_limit=100)
+            memory.save_context({"input": "Hello"}, {"output": "What's up"})
+            memory.save_context({"input": "Not much, just hanging"},
+                                {"output": "Cool"})
+            memory.save_context({"input": "What is on the schedule today?"}, 
+                                {"output": f"{schedule}"})
+            memory.load_memory_variables({})
+
+            ## Summary generated
+            > {'history': 'System: The human and AI exchange greetings. The human asks about the schedule for the day. 
+                       The AI provides a detailed schedule, including a meeting with the product team, work on the 
+                       LangChain project, and a lunch meeting with a customer interested in AI. The AI emphasizes 
+                       the importance of bringing a laptop to showcase the latest LLM demo during the lunch meeting.'}
+
+
 
 - Additional Langcahin Memory Types :
     - Vector data memory:  Stores text to a vector db and retrieves most relevant blocks of text
@@ -1494,10 +1555,12 @@ conversation = ConversationChain(
 NOTE: can use multiple memories at same time and can store in conventional database
 
 
-MAP LAST HERE
 
 ## Chains (13 min)
 ## 
+
+
+MAP LAST HERE
 
 
 ## Question and Answer (15 min)
