@@ -458,14 +458,88 @@ Image Generation :
 
 
 [week 2]
-MAP LAST HERE
+
 https://www.coursera.org/learn/generative-ai-for-everyone/lecture/LfGc4/using-generative-ai-in-software-applications
+https://www.coursera.org/learn/generative-ai-for-everyone/home/week/2
 
+# Software Applications
+
+    - writing 
+    - reading 
+    - chatbot 
+
+# Prompt based development
+prompt = """
+    Classify the following review 
+    as having either a positive or 
+    negative sentiment:
+
+    The banaa pudding was really tasty!
+"""
+response = llm_response(prompt)
+print(response)
+
+Workflow using Generative AI
+
+Supervised Learning:  [get label data] -> [Train AI on data] ->  [Deploy (run) model]
+                            1 months            3 months            3 month
+
+
+     Prmpt-based AI:  [Specify prompt] -> [Deploy (run) model]
+                       minutes / hours      hours / days
+
+
+- Lifecycle of a generative AI project 
+
+
+                                    +---------------------------+   +------------------------+
+                                    |                           |   |                        |
+                                    v                           |   v                        |
+    [scope project ] -->  [build / improve system]  --> [internal evaluation] --> [deploy and monitor] 
+
+Tools to improve performance:
+    - Promptying
+    - Retrieval Augmented Generation (RAG)
+        - Give LLM access to external data sources
+    - Fine-tune models
+        - Adapt LLM to your task
+    - Pretrain models
+        - Train LLM from scratch
+
+# Cost Intuition
+
+example prices 
+        OpenAI / GPT3.5   |   OpenAI / GPT4   |   Google/ Palm24    |    Amazon/Titan Lite  | 
+Input   $0.0015/1k tokens | $0.03/1k tokens   | $0.00025/1k tokens  |   $0.0003/1k tokens   |  
+Output  $0.002/1k tokens  | $0.06/1k tokens   | $0.0005/1k tokens   |   $0.0004/1k tokens   |
+
+
+What is a token
+    - A work or sub-part of a workd
+
+        ex. the or example  == 1 token
+            [tran][slate]   == 2 tokens
+            [program][ming] == 2 tokens
+            [ton][k][ots][u] == 4 tokens
+
+        Roughly 1 token = 3/4 word 
+            - 300 words == 400 tokens
+
+    read 250 words / minute 
+        - how much to occupy for 1 hr
+            60 min x 250 words / min = 15k output 
+                prompt=15k
+                total: 30k words
+                1 token = 3/4 word
+                30k words + 3/4 == 40k tokens
+                40k tokens  =$0.002/1k tokens  
+                $0.002 * 40 (40k tokens)  == $0.08 
+
+# Advanced technologies / Beyond Prompding 
+https://www.coursera.org/learn/generative-ai-for-everyone/lecture/qF1Az/retrieval-augmented-generation-rag
+                
+MAP LAST HERE
 [week 3]
-
-
-
-
 
 
 
