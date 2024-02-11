@@ -1928,10 +1928,7 @@ last name and then first name \
 and print the output: {customer_list}""") 
 
 
-
-MAP LAST HERE 
-
-## Conclusion (2 min)
+## Conclusion 
 ## 
 
 
