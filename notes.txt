@@ -1685,7 +1685,7 @@ NOTE: can use multiple memories at same time and can store in conventional datab
 
 # Router Chain
  see example in LC3_Chains.ipynb
- 
+
     - Route the input of a chain depending on what that input is
   
        +--------Router Chain-------+      If input     +- [ Subject ] --Destination_Chain --> [ Ouput ]
@@ -1697,12 +1697,23 @@ NOTE: can use multiple memories at same time and can store in conventional datab
        +---------------------------+                   +--- [ None ] -------Default_Chain ---> [ Ouput ]
 
 
+## Question and Answer (15 min)
+## 
+ - Q & A over Documents 
+
+
+
+
+
+
+
+
+
 
 MAP LAST HERE 
 
 
-## Question and Answer (15 min)
-## 
+
 
 
 ## Evaluation (15 min)
