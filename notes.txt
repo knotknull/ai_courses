@@ -1699,26 +1699,153 @@ NOTE: can use multiple memories at same time and can store in conventional datab
 
 ## Question and Answer (15 min)
 ## 
+ see example in LC4_QnA.ipynb
+
  - Q & A over Documents 
+    - combining LLM with data not originally chained on
+
+LLMs on Documents:
+    - LLMs can only inspect a few thousand words at a time
+
+    Embeddings: 
+        - create numeric representations for pieces of text
+            - captures semantic meaning of piece of text
+        - text with similar content will have similar vectors
+            - allows you to "compare" pieces of text in the vector space 
+
+    Vector Database: 
+        - populated with chunks of text from incoming documents
+
+              Create Vector Db
+
+    +--[Document]--+                                   +------------------------------------------+ 
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [-0.0035, -0.108 .. 0.063]     [.....]   |
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [-0.0035, -0.818 .. 0.966]     [.....]   |
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [ .......................]     [.....]   |
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [ .......................]     [.....]   |
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [ .......................]     [.....]   |
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [ .......................]     [.....]   |
+    | ...........  |  ->  [chunk] -> [embed]   -->>    | [-0.4724, -0.428 .. 0.097]     [.....]   |
+    |              |                                   +------------------------------------------+
+    +--------------+                                         embedding vectors      original chunks
 
 
+              Index 
+               
+                                                       +------------------------------------------+ 
+                  +---->  [chunk] -> [embed]   -->>    | [-0.0035, -0.108 .. 0.063]     [.....]   |
+                /    +->  [chunk] -> [embed]   -->>    | [-0.0035, -0.818 .. 0.966]     [.....]   |  --> [......]
+               /    /                                  | [ .......................]     [.....]   |
+              /    /                                   | [ .......................]     [.....]   |
+        +----------+                                   | [ .......................]     [.....]   |
+        |  query   |                                   | [ .......................]     [.....]   |
+        |          |--->  [chunk] -> [embed]   -->>    | [-0.4724, -0.428 .. 0.097]     [.....]   |  --> [......]
+        +----------|                                   +------------------------------------------+
+                                                                                                 Pick the N most similar 
+                           Compare All Entries   
+
+    NOTE: Pass the returned entries from Vector DB query and pass to LLM
 
 
+How to setup vector db:
+
+import os
+from dotenv import load_dotenv, find_dotenv
+## get env
+## 
+_ = load_dotenv(find_dotenv("/home/map/archive/ai/ai_courses/code/.env")) # read local .env file
+
+import warnings
+warnings.filterwarnings('ignore')
+
+from langchain.chains import RetrievalQA
+from langchain.chat_models import ChatOpenAI
+from langchain.document_loaders import CSVLoader
+from langchain.vectorstores import DocArrayInMemorySearch
+from IPython.display import display, Markdown
+##from langchain.llms import OpenAI
+from langchain_openai import OpenAI
+
+## Load document file
+## 
+file = '/home/map/archive/ai/ai_courses/data/OutdoorClothingCatalog_750.csv'
+from langchain.document_loaders import CSVLoader
+loader = CSVLoader(file_path=file)
+docs = loader.load()
+
+## Get Embeddings of document file
+## 
+from langchain.embeddings import OpenAIEmbeddings
+embeddings = OpenAIEmbeddings()
+
+## Create vector store from docs and embeddings object
+## 
+db = DocArrayInMemorySearch.from_documents(
+    docs, 
+    embeddings
+)
+
+## Now query against Vector DB
+## 
+query = "Please suggest a shirt with sunblocking"
+docs = db.similarity_search(query)
+len(docs)
+
+## Create "retriever" from vector store
+## generic interface that takes in query and returns documents
+## 
+retriever = db.as_retriever()
+
+llm = ChatOpenAI(temperature = 0.0, model="gpt-3.5-turbo")
+
+## Create Retrieval QnA Chain
+qa_stuff = RetrievalQA.from_chain_type(
+    llm=llm, 
+    chain_type="stuff", 
+    retriever=retriever, 
+    verbose=True
+)
+
+query =  "Please list all your shirts with sun protection in a table \
+in markdown and summarize each one."
+
+response = qa_stuff.run(query)
+display(Markdown(response))
 
 
+## can also do it as 
+## response = index.query(query, llm=llm)
+##  
+## or
+##  
+## index = VectorstoreIndexCreator(
+##     vectorstore_cls=DocArrayInMemorySearch,
+##     embedding=embeddings,
+## ).from_loaders([loader])
 
 
+Stuff method:  stuff all data into the prompt as context to pass to language model.
+    pros: makes a single call to LLM. LLM has access to all the data at once
+    cons: LLMs have a context length.  For large or many docs this will not work 
+            will result in a prompt larger than context length
 
 
-MAP LAST HERE 
+3 Additional methods:
+    - Map_reduce
+        - chunks to LLM and then assemble at final LLM
+    - Refine
+        - iteratively over chunks
+        NOTE: not as fast, waits for results of previous calls
+    - Map_rerank
+        - chunks to LLM and aks for score and return highest score 
 
-
-
+NOTE: use Map_reduce chain to summarize a document
 
 
 ## Evaluation (15 min)
 ## 
 
+MAP LAST HERE 
 
 ## Agents (14 min)
 ## 
