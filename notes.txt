@@ -1844,12 +1844,44 @@ NOTE: use Map_reduce chain to summarize a document
 
 ## Evaluation (15 min)
 ## 
+see LC5_Evaluation.ipynb
 
-MAP LAST HERE 
+ - Evaluating LLM Applications 
+
+# LLM Assisted evaluation
+
+    use the following:
+
+    from langchain.chains import RetrievalQA
+
+    qa = RetrievalQA.from_chain_type(
+         llm=llm, 
+        chain_type="stuff", 
+        retriever=index.vectorstore.as_retriever(), 
+        verbose=True,
+        chain_type_kwargs = {
+         "document_separator": "<<<<>>>>>"
+        }
+    )
+    ## LLM Generated examples
+    from langchain.evaluation.qa import QAGenerateChain
+    example_gen_chain = QAGenerateChain.from_llm(ChatOpenAI(model=llm_model))
+
+from langchain.evaluation.qa import QAEvalChain
+llm = ChatOpenAI(temperature=0, model=llm_model)
+eval_chain = QAEvalChain.from_llm(llm)
+graded_outputs = eval_chain.evaluate(examples, predictions)
+
+
+
+NOTE: Access the LangChain Plus platform: https://www.langchain.plus/
+     invite code lang_learners_2023
+
 
 ## Agents (14 min)
 ## 
 
+MAP LAST HERE 
 
 ## Conclusion (2 min)
 ## 
