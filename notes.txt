@@ -1591,6 +1591,9 @@ NOTE: can use multiple memories at same time and can store in conventional datab
 
 # SimpleSequentialChain
 
+  [Input] --Chain_1--> [Output_Chain_1] = [Input_Chain_2] --Chain_2--> [Output_Chain_2]
+
+
     ex. 
         # set llm
         llm = ChatOpenAI(temperature=0.9, model="gpt-3.5-turbo")
@@ -1620,8 +1623,82 @@ NOTE: can use multiple memories at same time and can store in conventional datab
         # run the chain                       
         overall_simple_chain.run(product)
 
-# SimpleSequentialChain
-MAP LAST HERE [4:23]
+# SequentialChain
+  
+           +--Chain_1--> [Out_Chain_1] = [In_Chain_2] --Chain_2--> [Out_Chain_2] = [In_Chain_4]
+          /                                                                               + 
+  [Input]                                                                                 +----Chain_4--> [Out_Chain_4]
+          \                                                                               +
+           +-------------------------Chain_3---------------------> [Out_Chain_3] = [In_Chain_4] 
+
+
+
+    - This creates a chain with several steps withthe output of one feeding input of the next chain
+    
+            from langchain.chains import SequentialChain
+            llm = ChatOpenAI(temperature=0.9, model="gpt-3.5-turbo")
+
+            # prompt template 1: translate to english
+            first_prompt = ChatPromptTemplate.from_template("Translate the following review to english:"
+                            "\n\n{Review}" )
+            
+            # chain 1: input= Review and output= English_Review
+            chain_one = LLMChain(llm=llm, prompt=first_prompt, output_key="English_Review")
+                    
+
+            # 2nd prompt template 1: summarize
+            second_prompt = ChatPromptTemplate.from_template(
+                    "Can you summarize the following review in 1 sentence:"
+                    "\n\n{English_Review}")
+
+            # chain 2: input= English_Review and output= summary
+            chain_two = LLMChain(llm=llm, prompt=second_prompt, output_key="summary")
+                    
+            # 3rd prompt template 3: what language english
+            third_prompt = ChatPromptTemplate.from_template( "What language is the following review:\n\n{Review}")
+
+            # chain 3: input= Review and output= language
+            chain_three = LLMChain(llm=llm, prompt=third_prompt, output_key="language")
+                      
+            # prompt template 4: tranlate the summary to the original language 
+            fourth_prompt = ChatPromptTemplate.from_template(
+                    "Write a follow up response to the following "
+                    "summary in the specified language:"
+                    "\n\nSummary: {summary}\n\nLanguage: {language}"
+            )
+
+            # chain 4: input= summary, language and output= followup_message
+            chain_four = LLMChain(llm=llm, prompt=fourth_prompt,output_key="followup_message" )
+
+            # Overall Chain == chain 1 + chain 2 + chain 3 + chain 4
+            # overall_chain: input= Review 
+            # and output= English_Review,summary, followup_message
+            overall_chain = SequentialChain( chains=[chain_one, chain_two, chain_three, chain_four],
+                        input_variables=["Review"],output_variables=["English_Review", "summary","followup_message"],
+                        verbose=True)
+
+            ## get a review and input into the overall chain             
+            review = df.Review[5]
+            overall_chain(review)
+
+
+
+# Router Chain
+ see example in LC3_Chains.ipynb
+ 
+    - Route the input of a chain depending on what that input is
+  
+       +--------Router Chain-------+      If input     +- [ Subject ] --Destination_Chain --> [ Ouput ]
+       |     +----subjects---+     |   is related to  /                                                                               
+       |     |  1. Math      |     |                 /                                                                               
+  [Input]    |  2. History   | ----|----------------+                                                                
+       |     |  3. ....      |     |                 \                                                                               
+       |     +----------------     |         else     \                                                                               
+       +---------------------------+                   +--- [ None ] -------Default_Chain ---> [ Ouput ]
+
+
+
+MAP LAST HERE 
 
 
 ## Question and Answer (15 min)
