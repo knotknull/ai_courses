@@ -622,9 +622,26 @@ https://www.coursera.org/learn/generative-ai-for-everyone/lecture/qF1Az/retrieva
 
 
 # Tool use and agents
+    - tools for reasoning
+        - LLMs are not great at precise math
+        - give LLM a calcuator tool
+
+    - Agents
+        - Use LLM to choose and carry out comples sequences of actions
+        - Cutting edge AI research 
+        ex. 
+            Help me research BetterBurgers top competitors   
+            > Here are the steps I need to carry out to research competitors
+            > 1. Search top competitors            --> Tool to search  
+            > 2. Visit web site of each competito  --> Tool to visit website
+            > 3. For each competitor, write summary based on homepage content 
+                                                   +--> call LLM to summarize website visits 
+
 
 
 [week 3]
+https://www.coursera.org/learn/generative-ai-for-everyone/lecture/vbYyI/day-to-day-usage-of-web-ui-llms
+
 
 MAP LAST HERE
 

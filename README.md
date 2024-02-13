@@ -5,10 +5,10 @@
 | Course | Length | Status | URL | Notes| 
 | ----------- | ----------- | ----------- | ----------- |  ----------- | 
 | Generative AI with Large Language Models  | 16 hr | ENROLLED | https://www.coursera.org/learn/generative-ai-with-llms/home/week/1 | |
-| Generative AI for Everyone (3 Week course )                | 3 hr | INPROGRESS |3 week course, started Feb-3, Feb-10, Feb-17 | completed week 1 |  
+| Generative AI for Everyone (3 Week course )                | 3 hr | INPROGRESS |3 week course, started Feb-3, Feb-10, Feb-17 | completed week 1,2 |  
 | | | | https://www.coursera.org/learn/generative-ai-for-everyone/home/week/1 |  (COMPLETED) | 
-| | | | https://www.coursera.org/learn/generative-ai-for-everyone/home/week/2 |  (STARTED)  | 
-| | | | https://www.coursera.org/learn/generative-ai-for-everyone/home/week/3 |  (TODO ) | 
+| | | | https://www.coursera.org/learn/generative-ai-for-everyone/home/week/2 |  (COMPLETED)  | 
+| | | | https://www.coursera.org/learn/generative-ai-for-everyone/home/week/3 |  (STARTED) | 
 | Generative AI Learning Plan for Decision Makers | 3 hr | TODO | https://explore.skillbuilder.aws/learn/public/learning_plan/view/1909/generative-ai-learning-plan-for-decision-makers | |
 | Microsoft Azure AI Fundamentals: Generative AI | 2.5 hr | TODO |  https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/ |  |
 | LangChain for LLM Application Development | 1 hr | COMPLETED 20240211 |   https://learn.deeplearning.ai/langchain/lesson/1/introduction |  |
