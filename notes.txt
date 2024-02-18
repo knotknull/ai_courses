@@ -643,8 +643,182 @@ https://www.coursera.org/learn/generative-ai-for-everyone/lecture/qF1Az/retrieva
 https://www.coursera.org/learn/generative-ai-for-everyone/lecture/vbYyI/day-to-day-usage-of-web-ui-llms
 
 
-MAP LAST HERE
+## Generative AI and business 
 
+
+# Task analysis of jobs
+    - identifying automation opportunities
+        - automate tasks (not jobs)
+        ex. customer service rep
+                Tasks                                |   Gen AI potential
+      -----------------------------------------------|--------------------------------
+        Answer inbound phone calls from customers    |   low
+        Answer customer chat queries                 |   high
+        Check status of customer orders              |   medium 
+        Keep records of customer interatcions        |   high 
+        Assess accurace of customer complaints       |   low 
+
+    - Augmentation vs. Automation
+    Augmentation:
+        - help humans w/ task 
+           - recommend a response for a customer service agent
+    Automation:
+        - automatically perform a task
+           - transcribe / summarizes customer interactions
+
+    - Evaluating AI potential 
+        - technical feasibility 
+            - can AI do it ?
+            - can a fresh college graduate following the instructions in a prompt complete the task ?
+            - try pompting LLM to see if they can do the task
+            - see if an AI engineer can help assess using: RAG, fine-tuning, etc.
+
+        - business value 
+            - how valuable is it for AI to augment / automate
+            - how much time spent / saved
+            - is there value in doing faster / cheaper / more consistently ?
+
+    NOTE: Job databases: breaking down job roles into tasks 
+            onetonline.org
+
+# Additional job analysis 
+
+        ex. computer programmer
+                Tasks                               |   Gen AI potential
+      ----------------------------------------------|--------------------------------
+        Write code                                  |   medium
+        write documentations                        |   high
+        user support requests                       |   medium 
+        review other code                           |   low 
+        gather requirements                         |   low 
+
+        ex. lawyer
+                Tasks                               |   Gen AI potential
+      ----------------------------------------------|--------------------------------
+        draft and review legal documents            |   hight
+        interpret laws, rulings and regulations     |   high
+        review evidence                             |   low 
+        negotiate settlements of disputes           |   low 
+        represent clients in court                  |   low 
+
+NOTE: AI better represents growth potential vs. cost savings
+
+
+# New workflows and new opportunities
+
+    - introducing AI to workflows and shorten prior workflows 
+        - allows for re-engineering workflow to become more "efficient" and add additional functionality 
+
+
+    - Opportunity: Analyze Customer's Tasks
+        
+        ex. helping customers build websites 
+                Tasks                               |   Gen AI potential
+      ----------------------------------------------|--------------------------------
+        select website template                     |   low
+        write title                                 |   high
+        select images                               |   medium 
+        write copy for homepage                     |   medium 
+        optimize copy for SEO                       |   high 
+
+
+# Teams to build generative AI software 
+    Common roles:
+        - software engineer 
+            - responsible for writing software application 
+            - ideally someone who has learned basics of LLMs / prompting
+
+        - machine learning engineer
+            - responsible for implementing AI system
+            - ideally familiar with LLMs/prompting, RAG, fine-tuning
+
+        - product manager
+            - responsible for identifying and scoping the project
+
+        - prompt engineer
+            - usually not hired as a dedicated role (software or ML engineer)
+
+    bootstrap with small teams
+        1 / 2 / 3 person teams 
+        larger teams can include:
+            data engineer    : organize data,  ensure quality, security 
+            data scientist   : analyze data, make recommendations for project / business decisions
+            project scientist: coordinate project execution
+            M/L researcher   : develop / adapt advanced AI technologies   
+
+
+# Automation potential across sectors 
+
+    - Generative AI will impact higher-paid jobs more
+    - McKinsey analysis;
+        - 75% of total annual impact of generative AI
+            - Sales                 - Marketing
+            - Product R&D           - Customer operations
+            - Software engineering (product development/ corporate IT)
+            
+    - Analysis by industry sectory 
+
+    industry /                                 impact of gen AI on 
+    sector                                      potential automation
+    ----------------------------------------|----------------------------- 
+    Educator / workforce training           |           39 
+    business / legal professionals          |           30 
+    STEM professionals                      |           29 
+    Community services                      |           26 
+    Creative and arts management            |           25 
+    Office support                          |           21 
+    Managers                                |           17 
+    Health professionals                    |           14 
+    Customer service and sales              |           12 
+    Property management                     |            9 
+            
+    NOTE: Gen AI could have mose impact on "Knowledge Workers" 
+
+
+
+
+## Generative AI and society
+
+Concerns:
+    - LLMs are trained on text from internet: best and worst qualities
+        - Less biased wit Reinforcement Learning from Human Feedback
+
+    - Job loss
+        "AI won't replace radiologists.
+         But radiologiststhat use AI will replace radiologists that don't"
+        - AI can create more jobs than it replaces
+
+
+    - AI is a powerful technology ... Look at airplanes as an example 
+
+# Artificial General Intelligence
+    - AI that can do any intellectual task that a human can
+        - drive a car
+        - complete a PhD thesis
+        - do the tasks of a computer programmer 
+
+# Responsible AI
+    - Fairness
+        - Ensuring AI does not perpetural bias
+    - Transparency
+        - Make AI systems and their decisions understandable to stakeholders 
+    - Privacy
+        - Protecting user data / confidentiality
+    - Security
+        - Safeguard from malicious attacks
+    - Ethical Use
+        - Used for beneficial purposes
+
+    Tips:
+        - build a culture that encourages discussion / debate on ethical issues
+        - brainstorm how things can go wrong
+        - work with a diverse team / include various perspectives
+        - utilize / review industry guidelines 
+
+Artifical Intelligence is the new "electricity"
+
+GPTs are GPTs: An Early look at the Labor Market Impact Potentail of Large Language Models 
+https://arxiv.org/pdf/2303.10130.pdf
 
 #########################################################################################################
 ## ChatGPT Prompt Engineering for Developers
