@@ -2286,9 +2286,83 @@ and print the output: {customer_list}""")
 
 
 
+#########################################################################################################
+## Microsoft Azure AI Fundamentals: Generative AI	
+#########################################################################################################
+
+https://learn.microsoft.com/en-us/training/paths/introduction-generative-ai/
 
 
 
+LLM:
+    - Transformer Model
+        - trained with large volumes of text  
+        - represent the semantic relationships between words
+            - use those relationships to determine probably sequences of text that make sense 
+
+    - Transformer Model Architecture
+        - an encoder block that creates semantic representations of the training vocabulary
+        - an decoder block that generates new language sequences
+                - Bidirectional Encoder Representations from Transformers (BERT) from Google only uses encoder
+                - Generative Pretrained Transformer model developed by OpenAI
+
+NOTE:  The LLM combines the capabilities of the Transformer model with other components such as language generation, 
+       context understanding, and coherence maintenance to produce coherent and contextually relevant text.
+
+        steps:
+            1. text to tokens 
+            2. tokens to contextual vectors (aka embeddings, relastionships between workds/tokens)
+                - think coordinates in multidimensional space
+                    - each token occupies a specific location
+                    - related tokens are closer together in a particular dimension
+                        i.e. token for "dog" is "close" to both "bark" and "cat" 
+            3. Attention
+                - a layer within the transformer neural network layers
+                - a technique used to examine a sequence of text tokens and 
+                  try to quantify the strength of the relationships between them
+                - self-attention considers how other tokens around one particular token influence 
+                  that token's meaning. 
+                - In encoder block, attention layers used to examine each token in context and 
+                   determine appropriate encoding for its vector embedding
+                        - same word can have different embeddings bepending on context 
+                            i.e. "the bark of a tree" vs. "I heard a dog bark"  
+                - In decoder block, attention layers used to predict the next token in a squence.
+                    Model considers which tokens are the most influential when considering what 
+                    next token should be. 
+                        i.e. I {heard} a {dog} [bark]
+                                 ^         ^      ^+------- predicted next token 
+                                 +---------+
+                                      +----- greater weighted words
+                                      
+                    Model iteratively processes each token in sequence: output of one is input of the next round  
+
+NOTE:  During training, the actual sequence of tokens is known – we just mask the ones that come later in the sequence 
+       than the token position currently being considered. As in any neural network, the predicted value for the token 
+       vector is compared to the actual value of the next vector in the sequence, and the loss is calculated. The 
+       weights are then incrementally adjusted to reduce the loss and improve the model. 
+       
+LLMs can be "fine tuned" with custom data.
+
+## Azure Open AI Service documentation
+## 
+https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/models
+
+
+Copilots: allow for users to get help from Generative AI for common tasks.
+
+Prompt engineering: 
+    - System Messages: 
+        "You are a helpful assistant ...."
+    - Good prompts: 
+        - be explicit on what is required in a response
+    - Providing examples :
+        - "few shot" prompts 
+        - examples of the output needed given in the the prompt.
+    - Grouding data:
+        - include contextual data in the prompt to be used by the LLM
+
+MAP LAST HERE
+https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/6-writing-prompts
 
 
 
