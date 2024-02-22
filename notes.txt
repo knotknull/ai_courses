@@ -2361,9 +2361,40 @@ Prompt engineering:
     - Grouding data:
         - include contextual data in the prompt to be used by the LLM
 
-MAP LAST HERE
 https://learn.microsoft.com/en-us/training/modules/fundamentals-generative-ai/6-writing-prompts
 
 
 
+## Fundamentals of Azure OpenAI Service 
+## 
+
+https://learn.microsoft.com/en-us/training/modules/explore-azure-openai/1-introduction
+
+
+Azure OpenAI Models:
+    - GPT-4 models that represent the latest generateive models for natural language and code
+    - GPT-3.5 models that can generate natural language and code responses based on prompts
+    - Embeddings models that convert text to numeric vectors for analysis 
+        - comparing sources of text for similarity
+    - DALL-E models that generate images based on natural language descriptions
+
+
+    6 AI principles
+
+    1. Fairness: AI systems shouldn't make decisions that discriminate against or support bias of a group or individual.
+    2. Reliability and Safety: AI systems should respond safely to new situations and potential manipulation.
+    3. Privacy and Security: AI systems should be secure and respect data privacy.
+    4. Inclusiveness: AI systems should empower everyone and engage people.
+    5. Accountability: People must be accountable for how AI systems operate.
+    6. Transparency: AI systems should have explanations so users can understand how they're built and used.
+
+
+## Fundamentals of Responsible Generative AI
+## 
+
+https://learn.microsoft.com/en-us/training/modules/responsible-generative-ai/
+
+https://learn.microsoft.com/en-us/training/modules/responsible-generative-ai/2-plan-responsible-ai
+
+MAP LAST HERE
 .
