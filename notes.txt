@@ -2539,8 +2539,8 @@ Challenges and risks with AI
 
 
 
-Understand Rsponsible AI 
-    - Fairneess
+Understand Responsible AI 
+    - Fairness
     - Reliability and safety
     - Privacy and security
     - Inclusiveness
